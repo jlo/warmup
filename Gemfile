@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rspec-rails'
+# gem 'pg'
 
 group :production do
   gem 'pg',             '0.17.1'
