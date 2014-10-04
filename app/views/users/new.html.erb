@@ -1,5 +1,24 @@
-<h1>New user</h1>
+<h1>Please enter your credentials below</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', users_path %>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :Username %><br />
+    <%= f.text_field :user %>
+  </p>
+  <p>
+    <%= f.label :Password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p> <%= button_to "Login", log_in_path, :method => :post %> </p>
+  <p class="button"><%= submit_tag "Add User" %></p>
+<% end %>

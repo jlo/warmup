@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  Welcome <%= @user.user %>
+</p>
+
+<p>
+  You have logged in <%= @user.count %> times.
+</p>
+
+<%= link_to 'Logout', root_path %>
+
+<!-- <p>
   <strong>User:</strong>
   <%= @user.user %>
 </p>
@@ -16,4 +26,4 @@
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path %> -->

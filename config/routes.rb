@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  root :to => "users#new"
   resources :users
-  post 'users/login', to: 'users#login', as: :login
+  resources :sessions
+
+  # get "log_out" => "sessions#destroy", :as => "log_out"
+  post "log_in" => "users#login", :as => "log_in"
+  # get "add_user" => "users#add", :as => "add_user"
+
+  # post 'users/login', to: 'users#login', as: :login
   post 'users/add', to: 'users#add', as: :user_add
   post 'TESTAPI/resetFixture', to: 'users#TESTAPI_resetFixture', as: :TESTAPI_resetFixture
   # post 'TESTAPI/unitTests'
@@ -9,7 +16,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root 'users#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

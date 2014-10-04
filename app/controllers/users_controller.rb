@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def add
     user = params[:user]
     password = params[:password]
-    user = User.new(:user => user, :password => password, :count => 0)
+    user = User.new(:user => user, :password => password, :count => 1)
     user.save
     # User.create(:user => user, :password => password, :count => 0)
     render :json => {:user => user.user, :password => user.password}
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
+    @user.count = 1
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -62,6 +62,14 @@ class UsersController < ApplicationController
       end
     end
   end
+  # def create
+  #   @user = User.new(params[:user])
+  #   if @user.save
+  #     redirect_to root_url, :notice => "Signed up!"
+  #   else
+  #     render "new"
+  #   end
+  # end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
